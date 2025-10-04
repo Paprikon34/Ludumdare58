@@ -1,10 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjajb7dv7jgc4"]
+[gd_scene load_steps=19 format=3 uid="uid://bjajb7dv7jgc4"]
 
+[ext_resource type="Script" uid="uid://mlk5g52qmnqs" path="res://mages/tvrda_ryza_cervena.gd" id="1_41mm3"]
 [ext_resource type="Texture2D" uid="uid://cwc4tuil8qb4f" path="res://mage guardians/mage_guardian-red.png" id="1_fvf3y"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41mm3"]
-radius = 15.0
-height = 63.71
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsm5v"]
 atlas = ExtResource("1_fvf3y")
@@ -112,12 +109,25 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41mm3"]
+size = Vector2(80, 60)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_41mm3")
+[node name="CharacterBody2D" type="Node2D"]
+script = ExtResource("1_41mm3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_noov4")
 animation = &"idle"
-frame_progress = 0.6749409
+frame_progress = 0.8880658
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_41mm3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -50.0
+offset_right = 22.0
+offset_bottom = -27.0
+text = "Freak"

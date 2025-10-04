@@ -1,10 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://n843aycjaytd"]
+[gd_scene load_steps=19 format=3 uid="uid://n843aycjaytd"]
 
 [ext_resource type="Texture2D" uid="uid://c3f4h7ls7aogk" path="res://mage guardians/mage_guardian-blue.png" id="1_44qva"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2o8l"]
-radius = 15.0
-height = 63.71
+[ext_resource type="Script" uid="uid://b010vvfe6xepw" path="res://mages/mneky_rysa_modry.gd" id="1_o2o8l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wh0ni"]
 atlas = ExtResource("1_44qva")
@@ -112,12 +109,31 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2o8l"]
+size = Vector2(80, 60)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_o2o8l")
+[node name="CharacterBody2D" type="Node2D"]
+script = ExtResource("1_o2o8l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_o658c")
 animation = &"idle"
-frame_progress = 0.22637342
+frame_progress = 0.9963526
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_o2o8l")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -164.0
+offset_top = -54.0
+offset_right = 165.0
+offset_bottom = -31.0
+text = "NIIIIIIIIIIIIIIGGGGGGGGGGEEEEEEEEERRRRR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
