@@ -1,0 +1,123 @@
+[gd_scene load_steps=18 format=3 uid="uid://n843aycjaytd"]
+
+[ext_resource type="Texture2D" uid="uid://c3f4h7ls7aogk" path="res://mage guardians/mage_guardian-blue.png" id="1_44qva"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o2o8l"]
+radius = 15.0
+height = 63.71
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh0ni"]
+atlas = ExtResource("1_44qva")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiotj"]
+atlas = ExtResource("1_44qva")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qhdu"]
+atlas = ExtResource("1_44qva")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo5yk"]
+atlas = ExtResource("1_44qva")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_assth"]
+atlas = ExtResource("1_44qva")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p87s7"]
+atlas = ExtResource("1_44qva")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehqmo"]
+atlas = ExtResource("1_44qva")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yny10"]
+atlas = ExtResource("1_44qva")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhfij"]
+atlas = ExtResource("1_44qva")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6771"]
+atlas = ExtResource("1_44qva")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eltex"]
+atlas = ExtResource("1_44qva")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehijg"]
+atlas = ExtResource("1_44qva")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqai"]
+atlas = ExtResource("1_44qva")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkvu2"]
+atlas = ExtResource("1_44qva")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o658c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh0ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiotj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qhdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo5yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_assth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p87s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehqmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yny10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhfij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6771")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eltex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehijg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsqai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkvu2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 14.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o2o8l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o658c")
+animation = &"idle"
+frame_progress = 0.22637342
