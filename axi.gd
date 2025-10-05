@@ -1,9 +1,18 @@
 extends CharacterBody2D
 
-
+var health_image = preload("res://character_assets/hearts.png")
+var half_a_heart = preload("res://character_assets/half heart.png")
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var right = true
+@export var health  := 4.5
+@export var max_health := 4
+
+func _ready() -> void:
+	pass
+
+func _process(delta: float) -> void:
+	show_health()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -47,8 +56,20 @@ func _physics_process(delta: float) -> void:
 	else :
 		$AnimatedSprite2D.flip_h = true
 		$attack/CollisionShape2D.position.x = -6
+		
 	move_and_slide()
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.play("default")
+
+func show_health():
+	$CanvasLayer/Control/RichTextLabel.clear()
+
+	for x in range(floor(health)):
+		$CanvasLayer/Control/RichTextLabel.add_image(health_image)
+		
+	if health - floor(health) == 0.5:
+		$CanvasLayer/Control/RichTextLabel.add_image(half_a_heart)
+
+	

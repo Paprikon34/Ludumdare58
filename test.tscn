@@ -10,3 +10,4 @@ position = Vector2(576, 340)
 
 [node name="Axi" parent="." instance=ExtResource("2_6uqi0")]
 position = Vector2(521, 94)
+health = 4.5
