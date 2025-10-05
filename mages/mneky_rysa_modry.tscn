@@ -112,28 +112,31 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2o8l"]
 size = Vector2(80, 60)
 
-[node name="CharacterBody2D" type="Node2D"]
+[node name="CharacterBody2D" type="Area2D"]
 script = ExtResource("1_o2o8l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_o658c")
 animation = &"idle"
+autoplay = "idle"
 frame_progress = 0.9963526
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="NPC_Ubgrade" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC_Ubgrade"]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_o2o8l")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -164.0
-offset_top = -54.0
-offset_right = 165.0
-offset_bottom = -31.0
-text = "NIIIIIIIIIIIIIIGGGGGGGGGGEEEEEEEEERRRRR"
+[node name="BubbleLabel" type="Label" parent="."]
+offset_left = -81.0
+offset_top = -58.0
+offset_right = 82.0
+offset_bottom = -27.0
+text = "c"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="NPC_Ubgrade" to="." method="_on_npc_ubgrade_body_entered"]
+[connection signal="body_exited" from="NPC_Ubgrade" to="." method="_on_npc_ubgrade_body_exited"]

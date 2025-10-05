@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=3 uid="uid://d3papuw0h40no"]
+
+[ext_resource type="Script" uid="uid://bd0k4qx3u82u7" path="res://character_body_2d.gd" id="1_8uh7m"]
+[ext_resource type="Texture2D" uid="uid://blo7ryir8vkec" path="res://Luneblade - Little Axion (Free)/Sprite Sheet/Idle.png" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://g07x4vixf7yk" path="res://mages/fiala_fialkovy.tscn" id="3_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://n843aycjaytd" path="res://mages/mneky_rysa_modry.tscn" id="4_ykrsh"]
+[ext_resource type="PackedScene" uid="uid://bjajb7dv7jgc4" path="res://mages/tvrda_ryza_cervena.tscn" id="5_g14j6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uh7m"]
+atlas = ExtResource("1_37kl0")
+region = Rect2(0, 0, 91, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uqi0"]
+atlas = ExtResource("1_37kl0")
+region = Rect2(182, 0, 91, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppyta"]
+atlas = ExtResource("1_37kl0")
+region = Rect2(455, 0, 91, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykrsh"]
+atlas = ExtResource("1_37kl0")
+region = Rect2(728, 0, 91, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g14j6"]
+atlas = ExtResource("1_37kl0")
+region = Rect2(910, 0, 91, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbegm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uh7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uqi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppyta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykrsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g14j6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ehkex"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6uqi0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ppyta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykrsh"]
+size = Vector2(733, 20)
+
+[node name="test" type="Node"]
+
+[node name="player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_8uh7m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+position = Vector2(20, 1)
+sprite_frames = SubResource("SpriteFrames_vbegm")
+frame = 4
+frame_progress = 0.31249738
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_ehkex")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+material = SubResource("CanvasItemMaterial_6uqi0")
+position = Vector2(95, 250)
+physics_material_override = SubResource("PhysicsMaterial_ppyta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(107.5, 17)
+shape = SubResource("RectangleShape2D_ykrsh")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -275.0
+offset_top = -3.0
+offset_right = 479.0
+offset_bottom = 37.0
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("4_ykrsh")]
+position = Vector2(501, 220)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("5_g14j6")]
+position = Vector2(73, 218)
+
+[node name="CharacterBody2D3" parent="." instance=ExtResource("3_6uqi0")]
+position = Vector2(244, 217)
