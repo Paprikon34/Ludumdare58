@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3b5hhw2tejmr"]
+
+[ext_resource type="Script" uid="uid://436emoa7o6vy" path="res://spike.gd" id="1_j2q8x"]
+[ext_resource type="Texture2D" uid="uid://bir0q3in6orbb" path="res://spike.png" id="1_sy5k4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2q8x"]
+size = Vector2(43, 15)
+
+[node name="spike" type="Area2D"]
+script = ExtResource("1_j2q8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21.5, 13.5)
+shape = SubResource("RectangleShape2D_j2q8x")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 21.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+texture = ExtResource("1_sy5k4")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 43.0
+offset_bottom = 27.0
+texture = ExtResource("1_sy5k4")
+expand_mode = 1
+flip_h = true
