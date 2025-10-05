@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dco5xmad5jib2"]
+
+[ext_resource type="Texture2D" uid="uid://dceamt2vsdj0" path="res://Snímek_obrazovky_2025-10-05_105213-removebg-preview.png" id="1_gn41p"]
+[ext_resource type="Script" uid="uid://dcuxyp4lmxb8e" path="res://brakeble_ground.gd" id="1_o678w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o678w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o678w"]
+size = Vector2(64, 10)
+
+[node name="log" type="Area2D"]
+script = ExtResource("1_o678w")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_o678w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(33, 10)
+shape = SubResource("RectangleShape2D_o678w")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 65.0
+offset_bottom = 18.0
+texture = ExtResource("1_gn41p")
+expand_mode = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(33, 10)
+shape = SubResource("RectangleShape2D_o678w")
