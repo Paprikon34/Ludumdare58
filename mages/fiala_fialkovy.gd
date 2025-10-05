@@ -39,7 +39,7 @@ func handle_interaction():
 
 func perform_upgrade():
 	player.dash += 5
-	$BubbleLabel.text = "Upgrade bought – damage increased!"
+	$BubbleLabel.text = "Upgrade bought – dash unlocked!"
 	$BubbleLabel.visible = true
 
 	# Po 3 sekundách zprava zmizi
