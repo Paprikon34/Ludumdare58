@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://d3papuw0h40no"]
 
-[ext_resource type="Script" uid="uid://bd0k4qx3u82u7" path="res://character_body_2d.gd" id="1_8uh7m"]
 [ext_resource type="Texture2D" uid="uid://blo7ryir8vkec" path="res://Luneblade - Little Axion (Free)/Sprite Sheet/Idle.png" id="1_37kl0"]
+[ext_resource type="Script" uid="uid://c7ufyxd8npq6k" path="res://player.gd" id="1_ykrsh"]
 [ext_resource type="PackedScene" uid="uid://g07x4vixf7yk" path="res://mages/fiala_fialkovy.tscn" id="3_6uqi0"]
 [ext_resource type="PackedScene" uid="uid://n843aycjaytd" path="res://mages/mneky_rysa_modry.tscn" id="4_ykrsh"]
 [ext_resource type="PackedScene" uid="uid://bjajb7dv7jgc4" path="res://mages/tvrda_ryza_cervena.tscn" id="5_g14j6"]
@@ -61,7 +61,7 @@ size = Vector2(733, 20)
 [node name="test" type="Node"]
 
 [node name="player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_8uh7m")
+script = ExtResource("1_ykrsh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
 position = Vector2(20, 1)

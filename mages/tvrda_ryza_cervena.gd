@@ -3,7 +3,7 @@ extends Area2D
 
 
 @export var upgrade_cost: int = 10 #hodnota ubgradu
-@export var upgrade_text: String = "Do you wanna increase stat {cost} for souls?"
+@export var upgrade_text: String = "Do you wanna increase stat for {cost} souls?"
 @export var player_path: NodePath #pathing pro hrace
 
 var player_in_range: bool = false
@@ -17,7 +17,7 @@ func _ready():
 
 func _process(delta):
 	if player_in_range:
-		if Input.is_action_just_pressed("ui_end"):
+		if Input.is_action_just_pressed("interact"):
 			handle_interaction()
 
 func handle_interaction():
