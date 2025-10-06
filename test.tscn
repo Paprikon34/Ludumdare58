@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3papuw0h40no"]
+[gd_scene load_steps=3 format=3 uid="uid://bvck1xtfmqfee"]
 
-[ext_resource type="PackedScene" uid="uid://cbl31owktavw7" path="res://static_body_2d.tscn" id="1_8uh7m"]
-[ext_resource type="PackedScene" uid="uid://cpmwlglgbuv7y" path="res://axi.tscn" id="2_6uqi0"]
+[ext_resource type="PackedScene" path="res://static_body_2d.tscn" id="1_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://d0m1g2fo1abbd" path="res://axi.tscn" id="2_6uqi0"]
 
 [node name="Test" type="Node"]
 
@@ -10,4 +10,3 @@ position = Vector2(576, 340)
 
 [node name="Axi" parent="." instance=ExtResource("2_6uqi0")]
 position = Vector2(521, 94)
-health = 4.5
