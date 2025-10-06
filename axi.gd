@@ -8,21 +8,26 @@ const JUMP_VELOCITY = -500.0
 var right = true
 var is_dashing = false
 var is_healing = false
+var is_dead = false
 
 func _ready() -> void:
 	Global.dash = true
 
 func _process(_delta: float) -> void:
-	show_health()
-	$CanvasLayer/Control/Label.text = str(Global.souls)
-	if Input.is_action_just_pressed("heal") and is_on_floor() and not is_healing:
-		$AnimatedSprite2D.play("dash")
-		$healing.start()
-		is_healing = true
-	if Input.is_action_just_released("heal"):
-		is_healing = false
-		$healing.stop()
-		$AnimatedSprite2D.play("default")
+	if not is_dead:
+		if Input.is_action_just_pressed("ui_end"):
+			death()
+		
+		show_health()
+		$CanvasLayer/Control/Label.text = str(Global.souls)
+		if Input.is_action_just_pressed("heal") and is_on_floor() and not is_healing:
+			$AnimatedSprite2D.play("dash")
+			$healing.start()
+			is_healing = true
+		if Input.is_action_just_released("heal"):
+			is_healing = false
+			$healing.stop()
+			$AnimatedSprite2D.play("default")
 		
 func _on_healing_timeout() -> void:
 	if Global.souls > 0 and Global.hp_current < Global.hp_max:
@@ -40,72 +45,77 @@ func _on_healing_timeout() -> void:
 		$AnimatedSprite2D.play("default")
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if not is_dead:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_healing:
-		velocity.y = JUMP_VELOCITY
+		# Handle jump.
+		if Input.is_action_just_pressed("jump") and is_on_floor() and not is_healing:
+			velocity.y = JUMP_VELOCITY
+			
+		if velocity.y > 0 and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
+			$AnimatedSprite2D.play("fall")
+		elif velocity.y < 0 and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
+			$AnimatedSprite2D.play("jump")
+			
+		if velocity == Vector2(0,0) and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
+			$AnimatedSprite2D.play("default")
+			
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction := Input.get_axis("left", "right")
+		if direction and not is_healing:
+			velocity.x = direction * SPEED
+			if direction == -1:
+				right = false
+			else :
+				right = true
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			
+		if Input.is_action_just_pressed("attack") and not is_dashing and not is_healing:
+			attack()
+			$AnimatedSprite2D.play("attack_1")
+			
+			
+		if velocity.x != 0 and is_on_floor() and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
+			$AnimatedSprite2D.play("run")
 		
-	if velocity.y > 0 and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
-		$AnimatedSprite2D.play("fall")
-	elif velocity.y < 0 and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
-		$AnimatedSprite2D.play("jump")
-		
-	if velocity == Vector2(0,0) and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
-		$AnimatedSprite2D.play("default")
-		
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	if direction and not is_healing:
-		velocity.x = direction * SPEED
-		if direction == -1:
-			right = false
-		else :
-			right = true
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	if Input.is_action_just_pressed("attack") and not is_dashing and not is_healing:
-		attack()
-		$AnimatedSprite2D.play("attack_1")
-		
-		
-	if velocity.x != 0 and is_on_floor() and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
-		$AnimatedSprite2D.play("run")
-	
-	if right:
-		$AnimatedSprite2D.flip_h = false
-		$attack/CollisionShape2D.position.x = 6
-	else:
-		$AnimatedSprite2D.flip_h = true
-		$attack/CollisionShape2D.position.x = -6
-		
-	if Global.dash:
-		var veloc : float
-		if Input.is_action_just_pressed("dash"):
-			if direction:
-				$dash_lenght.start()
-				is_dashing = true
-				veloc = velocity.y
-				$AnimatedSprite2D.play("dash")
-		if Input.is_action_pressed("dash") and is_dashing:
-			if direction:
-				velocity.x = direction * 10000
-				velocity.y = veloc
-				if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
+		if right:
+			$AnimatedSprite2D.flip_h = false
+			$attack/CollisionShape2D.position.x = 6
+		else:
+			$AnimatedSprite2D.flip_h = true
+			$attack/CollisionShape2D.position.x = -6
+			
+		if Global.dash:
+			var veloc : float
+			if Input.is_action_just_pressed("dash"):
+				if direction:
+					$dash_lenght.start()
+					is_dashing = true
+					veloc = velocity.y
+					$AnimatedSprite2D.play("dash")
+			if Input.is_action_pressed("dash") and is_dashing:
+				if direction:
+					velocity.x = direction * 1000
+					velocity.y = veloc
+					if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
+						Input.action_release("dash")
+				else:
 					Input.action_release("dash")
-			else:
-				Input.action_release("dash")
-		if Input.is_action_just_released("dash"):
-			is_dashing = false
-			$dash_lenght.stop()
-	move_and_slide()
+			if Input.is_action_just_released("dash"):
+				is_dashing = false
+				$dash_lenght.stop()
+		move_and_slide()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	$AnimatedSprite2D.play("default")
+	if $AnimatedSprite2D.animation == "death":
+		$"CanvasLayer/end screen".show()
+		var tween = create_tween()
+		tween.tween_property($"CanvasLayer/end screen", "modulate:a", 1.0, 1.0)
+	else:
+		$AnimatedSprite2D.play("default")
 
 func show_health():
 	$CanvasLayer/Control/RichTextLabel.clear()
@@ -125,4 +135,27 @@ func _on_dash_lenght_timeout() -> void:
 	is_dashing = false
 
 func attack():
-	pass
+	await get_tree().create_timer(0.145).timeout
+	$attack/CollisionShape2D.disabled = false
+	await get_tree().create_timer(0.065).timeout
+	$attack/CollisionShape2D.disabled = true
+
+func damaged(dmg):
+	if not is_dead:
+		Global.hp_current -= dmg
+		if Global.hp_current == 0:
+			death()
+		else:
+			for x in range(4):
+				modulate.a = 0
+				await get_tree().create_timer(0.07).timeout
+				modulate.a = 255
+				await get_tree().create_timer(0.07).timeout
+
+func _on_attack_body_entered(body: Node2D) -> void:
+	if body.has_method("hurt"):
+		body.hurt(Global.dmg)
+
+func death():
+	is_dead = true
+	$AnimatedSprite2D.play("death")

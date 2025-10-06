@@ -507,7 +507,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_evhou")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 14.0
 }, {
@@ -615,7 +615,7 @@ script = ExtResource("1_lnhyy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7ros1")
-animation = &"attack_2"
+animation = &"death"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -629,6 +629,7 @@ debug_color = Color(8.856058e-06, 0.78171986, 0.91196823, 0.41960785)
 position = Vector2(6, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ha221")
+disabled = true
 debug_color = Color(0.63210756, 0.17931995, 0.2844268, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -682,11 +683,87 @@ theme_override_font_sizes/font_size = 61
 text = "100"
 vertical_alignment = 1
 
+[node name="end screen" type="Control" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/end screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -137.0
+offset_right = 151.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29219002, 0.29219005, 0.29219002, 0.7921569)
+
+[node name="Label" type="Label" parent="CanvasLayer/end screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -144.0
+offset_right = 137.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_yy41v")
+theme_override_font_sizes/font_size = 76
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/end screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -30.0
+offset_right = 155.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_yy41v")
+theme_override_font_sizes/font_size = 35
+text = "RESPAWN"
+
+[node name="Button2" type="Button" parent="CanvasLayer/end screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = 84.0
+offset_right = 155.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_yy41v")
+theme_override_font_sizes/font_size = 35
+text = "MAIN MENU"
+
 [node name="healing" type="Timer" parent="."]
 one_shot = true
 
 [node name="dash_lenght" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="healing" to="." method="_on_healing_timeout"]
 [connection signal="timeout" from="dash_lenght" to="." method="_on_dash_lenght_timeout"]
