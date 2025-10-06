@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cok753stln80y"]
+
+[ext_resource type="Script" uid="uid://blb1repqpv8l8" path="res://wall_of_fire.gd" id="1_culc8"]
+[ext_resource type="Texture2D" uid="uid://cei0jb0c30n64" path="res://wmremove-transformed-removebg-preview.png" id="1_xi835"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_culc8"]
+size = Vector2(72, 223.5)
+
+[node name="wall of fire" type="Area2D"]
+script = ExtResource("1_culc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(50, 124.25)
+shape = SubResource("RectangleShape2D_culc8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 17.0
+offset_top = 34.0
+offset_right = 177.25255
+offset_bottom = 192.0
+texture = ExtResource("1_xi835")
+expand_mode = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
