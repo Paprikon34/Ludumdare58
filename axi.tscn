@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://d0m1g2fo1abbd"]
+[gd_scene load_steps=93 format=3 uid="uid://cegnv8v88y41y"]
 
 [ext_resource type="Texture2D" uid="uid://c1pr2g2et2t68" path="res://Luneblade - Little Axion (Free)/Sprite Sheet/Attack 1.png" id="1_i5gjq"]
 [ext_resource type="Script" uid="uid://devdstsd6rmu3" path="res://axi.gd" id="1_lnhyy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dw28woii7rl8r" path="res://Luneblade - Little Axion (Free)/Sprite Sheet/Jump.png" id="7_qjjff"]
 [ext_resource type="Texture2D" uid="uid://67hycwnm56iu" path="res://Luneblade - Little Axion (Free)/Sprite Sheet/Run.png" id="8_mftp6"]
 [ext_resource type="Texture2D" uid="uid://cosq048ym1i0m" path="res://character_assets/soul sprite.png" id="10_5duia"]
+[ext_resource type="FontFile" uid="uid://cxju030yqohae" path="res://Trajan Pro Regular.ttf" id="11_yy41v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8u2rm"]
 atlas = ExtResource("1_i5gjq")
@@ -614,10 +615,8 @@ script = ExtResource("1_lnhyy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7ros1")
-animation = &"attack_1"
+animation = &"attack_2"
 autoplay = "default"
-frame = 9
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
@@ -645,6 +644,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="empty hps" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -668,7 +676,17 @@ layout_mode = 0
 offset_left = 76.0
 offset_top = 81.0
 offset_right = 197.0
-offset_bottom = 142.0
-text = "520"
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("11_yy41v")
+theme_override_font_sizes/font_size = 61
+text = "100"
+vertical_alignment = 1
+
+[node name="healing" type="Timer" parent="."]
+one_shot = true
+
+[node name="dash_lenght" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="healing" to="." method="_on_healing_timeout"]
+[connection signal="timeout" from="dash_lenght" to="." method="_on_dash_lenght_timeout"]

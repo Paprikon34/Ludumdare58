@@ -1,12 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvck1xtfmqfee"]
+[gd_scene load_steps=4 format=3 uid="uid://ber5j4g56rgtj"]
 
-[ext_resource type="PackedScene" path="res://static_body_2d.tscn" id="1_8uh7m"]
-[ext_resource type="PackedScene" uid="uid://d0m1g2fo1abbd" path="res://axi.tscn" id="2_6uqi0"]
+[ext_resource type="Texture2D" uid="uid://680hgxecmklu" path="res://icon.svg" id="1_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://cegnv8v88y41y" path="res://axi.tscn" id="2_6uqi0"]
+[ext_resource type="PackedScene" path="res://static_body_2d.tscn" id="3_6uqi0"]
 
 [node name="Test" type="Node"]
 
-[node name="StaticBody2D" parent="." instance=ExtResource("1_8uh7m")]
-position = Vector2(576, 340)
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -169570.0
+offset_top = -123064.0
+offset_right = 171611.0
+offset_bottom = 125259.0
+texture = ExtResource("1_6uqi0")
+stretch_mode = 1
 
 [node name="Axi" parent="." instance=ExtResource("2_6uqi0")]
 position = Vector2(521, 94)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_6uqi0")]
+position = Vector2(481, 345)
+scale = Vector2(15, 1)
