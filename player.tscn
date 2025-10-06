@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://cptgcfvj5ktd6"]
+
+[ext_resource type="Script" uid="uid://c7ufyxd8npq6k" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://blo7ryir8vkec" path="res://Luneblade - Little Axion (Free)/Sprite Sheet/Idle.png" id="2_i3pqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2n83"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rotv"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mrtc"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(288, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptwuv"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(432, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2qlo"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(576, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efiyr"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(720, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fax3"]
+atlas = ExtResource("2_i3pqv")
+region = Rect2(864, 0, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sweqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2n83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rotv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mrtc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptwuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2qlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efiyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fax3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
+radius = 20.0
+height = 42.0
+
+[node name="axi" type="CharacterBody2D"]
+physics_interpolation_mode = 1
+position = Vector2(68, 265)
+script = ExtResource("1_onrkg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.0000002, 9)
+scale = Vector2(2.687283, 1.3927408)
+sprite_frames = SubResource("SpriteFrames_sweqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_hqtel")
