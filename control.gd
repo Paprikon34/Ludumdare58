@@ -7,7 +7,7 @@ func _ready():
 	settings.visible = false
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://maps/main.tscn")
+	get_tree().change_scene_to_file("res://tscens/lvl1.tscn")
 
 
 func _on_settings_pressed() -> void:

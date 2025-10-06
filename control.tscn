@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmn2bc2rvmhb3"]
+[gd_scene load_steps=9 format=3 uid="uid://cmn2bc2rvmhb3"]
 
 [ext_resource type="Script" uid="uid://dw41kps2fbha0" path="res://control.gd" id="1_62e2m"]
 [ext_resource type="Texture2D" uid="uid://bleydx3xrostw" path="res://button.png" id="2_ee4bf"]
+[ext_resource type="AudioStream" uid="uid://1qfbd2i0r2tl" path="res://light-dungeon-20241130-315314.mp3" id="2_kbped"]
 [ext_resource type="FontFile" uid="uid://cxju030yqohae" path="res://Trajan Pro Regular.ttf" id="2_qtu10"]
+[ext_resource type="Script" uid="uid://b0c8s8023xl1q" path="res://audio_slider.gd" id="5_fj5cn"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kbped"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fj5cn"]
+color = Color(0.65012825, 0.6501283, 0.65012825, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_iy58a"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -24,6 +34,10 @@ offset_left = 84.0
 offset_top = 76.0
 offset_right = 412.0
 offset_bottom = 136.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kbped")
+autoplay = true
 
 [node name="main_menu" type="Control" parent="."]
 layout_mode = 1
@@ -181,6 +195,13 @@ offset_right = 107.5
 offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_kbped")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_fj5cn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_iy58a")
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_fj5cn")
 
 [node name="Label2" type="Label" parent="settings"]
 layout_mode = 1
@@ -203,3 +224,4 @@ horizontal_alignment = 1
 [connection signal="pressed" from="main_menu/TextureRect2/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="main_menu/TextureRect3/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="settings/TextureRect/back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="settings/audio_slider" to="settings/audio_slider" method="_on_value_changed"]
