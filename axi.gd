@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.flip_h = true
 			$attack/CollisionShape2D.position.x = -6
 			
-		if Global.dash:
+		if Global.dash == true:
 			var veloc : float
 			if Input.is_action_just_pressed("dash"):
 				if direction:
