@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://4br7vaarwdc"]
+[gd_scene load_steps=12 format=4 uid="uid://4br7vaarwdc"]
 
 [ext_resource type="Texture2D" uid="uid://bnvmkm10nl5yg" path="res://Dungeon Tile Set.png" id="1_ic6ai"]
 [ext_resource type="PackedScene" uid="uid://c3b5hhw2tejmr" path="res://tscens/spike.tscn" id="2_htphh"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cy4fehb6sjxjk" path="res://tscens/area_2d.tscn" id="4_gxlqe"]
 [ext_resource type="Script" uid="uid://cwvcn2nsjkkot" path="res://wall_of_fire_movment.gd" id="5_xj1gs"]
 [ext_resource type="PackedScene" uid="uid://cok753stln80y" path="res://tscens/wall_of_fire.tscn" id="6_5l3wr"]
-[ext_resource type="PackedScene" path="res://axi.tscn" id="7_htphh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qm84j"]
 texture = ExtResource("1_ic6ai")
@@ -476,7 +475,7 @@ rotation = 1.5695242
 scale = Vector2(1.0000001, 1.0000001)
 
 [node name="spike11" parent="spikes" instance=ExtResource("2_htphh")]
-position = Vector2(-112.39931, -313.85727)
+position = Vector2(-112.39931, -313.8573)
 rotation = 1.5695242
 scale = Vector2(1.0000001, 1.0000001)
 
@@ -563,9 +562,5 @@ shape = SubResource("RectangleShape2D_qm84j")
 
 [node name="wall of fire" parent="Area2D3" instance=ExtResource("6_5l3wr")]
 position = Vector2(613, -94)
-
-[node name="Axi" parent="." instance=ExtResource("7_htphh")]
-position = Vector2(116, 172)
-scale = Vector2(1.1599976, 1.1599976)
 
 [connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_body_entered"]

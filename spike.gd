@@ -1,5 +1,6 @@
 extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
-	if body == CharacterBody2D:
-		body.death()
+	if body is CharacterBody2D:
+		if body.has_method("death"):
+			body.death()

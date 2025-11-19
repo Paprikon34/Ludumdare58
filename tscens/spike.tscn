@@ -30,3 +30,5 @@ offset_bottom = 27.0
 texture = ExtResource("1_sy5k4")
 expand_mode = 1
 flip_h = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
