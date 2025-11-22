@@ -344,7 +344,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_t5y7p")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ufv0p"]
-load_path = "res://.godot/imported/Gemini_Generated_Image_a9g61ea9g61ea9g6-removebg-preview.png-12d4a8bf720c757cb9a100d4f57bcc3f.ctex"
 
 [node name="Node2D" type="Node2D"]
 

@@ -207,7 +207,7 @@ texture = ExtResource("1_ic6ai")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qm84j")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k1nkc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_htphh"]
 texture = ExtResource("1_ic6ai")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -405,7 +405,7 @@ texture = ExtResource("1_ic6ai")
 
 [sub_resource type="TileSet" id="TileSet_rv5w0"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_k1nkc")
+sources/0 = SubResource("TileSetAtlasSource_htphh")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm84j"]
 size = Vector2(289, 45)
