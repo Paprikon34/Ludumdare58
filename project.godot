@@ -19,14 +19,13 @@ run/main_scene="uid://cmn2bc2rvmhb3"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[display]
-
-window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
-
 [autoload]
 
 Global="*res://global_code.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 
