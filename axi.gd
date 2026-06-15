@@ -3,10 +3,11 @@ extends CharacterBody2D
 var health_image = preload("res://character_assets/hearts.png")
 var half_a_heart = preload("res://character_assets/half heart.png")
 var empty_health = preload("res://character_assets/empty hp.png")
-const SPEED = 300.0
-const JUMP_VELOCITY = -500.0
+const SPEED = 150.0
+const JUMP_VELOCITY = -250.0
 var right = true
 var is_dashing = false
+var can_dash = true
 var is_healing = false
 var is_dead = false
 
@@ -90,23 +91,23 @@ func _physics_process(delta: float) -> void:
 			
 		if Global.dash == true:
 			var veloc : float
-			if Input.is_action_just_pressed("dash"):
+			if Input.is_action_just_pressed("dash") and can_dash:
 				if direction:
 					$dash_lenght.start()
 					is_dashing = true
+					can_dash = false
 					veloc = velocity.y
 					$AnimatedSprite2D.play("dash")
 			if Input.is_action_pressed("dash") and is_dashing:
 				if direction:
-					velocity.x = direction * 1000
+					velocity.x = direction * 400
 					velocity.y = veloc
 					if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
 						Input.action_release("dash")
 				else:
 					Input.action_release("dash")
-			if Input.is_action_just_released("dash"):
-				is_dashing = false
-				$dash_lenght.stop()
+			if Input.is_action_just_released("dash") and is_dashing:
+				end_dash()
 		move_and_slide()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
@@ -131,8 +132,16 @@ func show_health():
 		$"CanvasLayer/Control/empty hps".add_image(empty_health)
 
 func _on_dash_lenght_timeout() -> void:
-	$dash_lenght.stop()
-	is_dashing = false
+	end_dash()
+
+func end_dash() -> void:
+	if is_dashing:
+		is_dashing = false
+		$dash_lenght.stop()
+		$dash_cooldown.start()
+
+func _on_dash_cooldown_timeout() -> void:
+	can_dash = true
 
 func attack():
 	await get_tree().create_timer(0.145).timeout

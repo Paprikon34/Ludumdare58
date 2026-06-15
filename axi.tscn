@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://cegnv8v88y41y"]
+[gd_scene format=3 uid="uid://cegnv8v88y41y"]
 
 [ext_resource type="Texture2D" uid="uid://c1pr2g2et2t68" path="res://Luneblade - Little Axion (Free)/Sprite Sheet/Attack 1.png" id="1_i5gjq"]
 [ext_resource type="Script" uid="uid://dldnc4u14rjco" path="res://axi.gd" id="1_lnhyy"]
@@ -609,35 +609,34 @@ height = 18.0
 radius = 9.0
 height = 70.0
 
-[node name="Axi" type="CharacterBody2D"]
-scale = Vector2(3, 3)
+[node name="Axi" type="CharacterBody2D" unique_id=1856140699]
 script = ExtResource("1_lnhyy")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1073427902]
 sprite_frames = SubResource("SpriteFrames_7ros1")
 animation = &"death"
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=473398551]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_t6wlg")
 debug_color = Color(8.856058e-06, 0.78171986, 0.91196823, 0.41960785)
 
-[node name="attack" type="Area2D" parent="."]
+[node name="attack" type="Area2D" parent="." unique_id=1699531672]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack" unique_id=404073358]
 position = Vector2(6, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ha221")
 disabled = true
 debug_color = Color(0.63210756, 0.17931995, 0.2844268, 0.41960785)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1242815494]
 limit_enabled = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2059486967]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1292369236]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -645,7 +644,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="empty hps" type="RichTextLabel" parent="CanvasLayer/Control"]
+[node name="empty hps" type="RichTextLabel" parent="CanvasLayer/Control" unique_id=1177455209]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -654,7 +653,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control" unique_id=2127306291]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -663,7 +662,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=2011771041]
 layout_mode = 0
 offset_top = 77.0
 offset_right = 74.0
@@ -672,7 +671,7 @@ texture = ExtResource("10_5duia")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=930494801]
 layout_mode = 0
 offset_left = 76.0
 offset_top = 81.0
@@ -683,7 +682,7 @@ theme_override_font_sizes/font_size = 61
 text = "100"
 vertical_alignment = 1
 
-[node name="end screen" type="Control" parent="CanvasLayer"]
+[node name="end screen" type="Control" parent="CanvasLayer" unique_id=1041958643]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -692,7 +691,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/end screen"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/end screen" unique_id=1422729259]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -705,7 +704,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.29219002, 0.29219005, 0.29219002, 0.7921569)
 
-[node name="Label" type="Label" parent="CanvasLayer/end screen"]
+[node name="Label" type="Label" parent="CanvasLayer/end screen" unique_id=1191250381]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -724,7 +723,7 @@ text = "YOU DIED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/end screen"]
+[node name="Button" type="Button" parent="CanvasLayer/end screen" unique_id=370983265]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -741,7 +740,7 @@ theme_override_fonts/font = ExtResource("11_yy41v")
 theme_override_font_sizes/font_size = 35
 text = "RESPAWN"
 
-[node name="Button2" type="Button" parent="CanvasLayer/end screen"]
+[node name="Button2" type="Button" parent="CanvasLayer/end screen" unique_id=829679650]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -758,12 +757,17 @@ theme_override_fonts/font = ExtResource("11_yy41v")
 theme_override_font_sizes/font_size = 35
 text = "MAIN MENU"
 
-[node name="healing" type="Timer" parent="."]
+[node name="healing" type="Timer" parent="." unique_id=682201086]
 one_shot = true
 
-[node name="dash_lenght" type="Timer" parent="."]
+[node name="dash_lenght" type="Timer" parent="." unique_id=198845440]
+wait_time = 0.25
+
+[node name="dash_cooldown" type="Timer" parent="." unique_id=198845441]
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="healing" to="." method="_on_healing_timeout"]
 [connection signal="timeout" from="dash_lenght" to="." method="_on_dash_lenght_timeout"]
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
