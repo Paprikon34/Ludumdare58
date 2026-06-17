@@ -632,7 +632,7 @@ disabled = true
 debug_color = Color(0.63210756, 0.17931995, 0.2844268, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1242815494]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 limit_enabled = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2059486967]

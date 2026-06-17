@@ -10,9 +10,11 @@ var is_dashing = false
 var can_dash = true
 var is_healing = false
 var is_dead = false
+var jumps_remaining = 2
+
 
 func _ready() -> void:
-	Global.dash = true
+	pass
 
 func _process(_delta: float) -> void:
 	if not is_dead:
@@ -51,8 +53,19 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 
 		# Handle jump.
-		if Input.is_action_just_pressed("jump") and is_on_floor() and not is_healing:
-			velocity.y = JUMP_VELOCITY
+		var max_jumps = 2 if Global.double_jump else 1
+		if is_on_floor():
+			jumps_remaining = max_jumps
+		elif jumps_remaining == max_jumps:
+			jumps_remaining = max_jumps - 1
+
+		if Input.is_action_just_pressed("jump") and not is_healing:
+			if is_on_floor():
+				velocity.y = JUMP_VELOCITY
+				jumps_remaining = max_jumps - 1
+			elif jumps_remaining > 0:
+				velocity.y = JUMP_VELOCITY
+				jumps_remaining -= 1
 			
 		if velocity.y > 0 and not $AnimatedSprite2D.animation == "attack_1" and not is_dashing and not is_healing:
 			$AnimatedSprite2D.play("fall")

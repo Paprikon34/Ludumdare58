@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dco5xmad5jib2" path="res://tscens/brakeble_ground.tscn" id="3_vb4g0"]
 [ext_resource type="FontFile" uid="uid://cxju030yqohae" path="res://Trajan Pro Regular.ttf" id="4_m21ij"]
 [ext_resource type="PackedScene" uid="uid://cegnv8v88y41y" path="res://axi.tscn" id="5_srnbe"]
+[ext_resource type="PackedScene" uid="uid://shopnpc12345" path="res://tscens/shop_npc.tscn" id="6_shopnpc"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bcrd"]
 texture = ExtResource("1_x5d07")
@@ -384,6 +386,10 @@ rotation = 1.5631821
 
 [node name="Axi" parent="." unique_id=1856140699 instance=ExtResource("5_srnbe")]
 position = Vector2(80, 187)
+
+[node name="ShopNPC" parent="." unique_id=987654322 instance=ExtResource("6_shopnpc")]
+position = Vector2(140, 187)
+
 
 [node name="Label" type="Label" parent="." unique_id=236154055]
 offset_left = 299.0

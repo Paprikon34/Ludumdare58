@@ -45,5 +45,3 @@ func _on_fullscreen_pressed() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		fullscreen_btn.text = "Windowed"
 		print("[Settings] Toggled to Fullscreen")
-
-

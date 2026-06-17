@@ -5,3 +5,4 @@ var hp_current := 4
 var hp_max := 4
 var dmg := 1
 var dash := false
+var double_jump := false

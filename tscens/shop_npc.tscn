@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://shopnpc12345"]
+
+[ext_resource type="Script" uid="uid://cfoege8pjdfiv" path="res://tscens/shop_npc.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://cxju030yqohae" path="res://Trajan Pro Regular.ttf" id="2_font"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 35.0
+
+[node name="ShopNPC" type="Area2D" unique_id=1881360700]
+scale = Vector2(0.48000062, 0.48000062)
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1629393716]
+shape = SubResource("CircleShape2D_1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1321765167]
+texture_filter = 1
+scale = Vector2(0.4, 0.4)
+
+[node name="PromptLabel" type="Label" parent="." unique_id=2076472095]
+visible = false
+z_index = 5
+texture_filter = 1
+offset_left = -60.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "Press [E]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1779628545]
+
+[node name="ShopUI" type="Control" parent="CanvasLayer" unique_id=631243737]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ShopUI" unique_id=705090104]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -180.0
+offset_right = 250.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ShopUI/Panel" unique_id=1353543705]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.12, 0.16, 0.95)
+
+[node name="Title" type="Label" parent="CanvasLayer/ShopUI/Panel" unique_id=191868143]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "WIZARD'S SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoulsLabel" type="Label" parent="CanvasLayer/ShopUI/Panel" unique_id=267921372]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 70.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "Souls: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyDash" type="Button" parent="CanvasLayer/ShopUI/Panel" unique_id=1420419205]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -45.0
+offset_right = 180.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Buy Dash (5 Souls)"
+
+[node name="BuyDoubleJump" type="Button" parent="CanvasLayer/ShopUI/Panel" unique_id=764838390]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = 25.0
+offset_right = 180.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "Buy Double Jump (10 Souls)"
+
+[node name="Close" type="Button" parent="CanvasLayer/ShopUI/Panel" unique_id=576169583]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -65.0
+offset_right = 60.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 14
+text = "Close"
